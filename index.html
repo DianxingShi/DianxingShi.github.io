@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
 
     <style>
+        .TNR {
+            font-family: 'Times New Roman', Times, serif;
+        }
         /* ================= 全局基础样式 ================= */
         body {
             font-family: 'Poppins', sans-serif;
@@ -190,7 +193,7 @@
                 padding-top: 180px;
             }
             /* 移动端隐藏侧边栏，防止遮挡 */
-            .love-sidebar, .clock-sidebar {
+            .love-sidebar, .clock-sidebar, .face {
                 display: none !important;
             }
         }
@@ -242,23 +245,88 @@
             flex-direction: column; 
             align-items: center;
             z-index: 9999;
-            gap: 2px; /* 微调间距 */
+            gap: 2px;
         }
         
         .clock {
-            /* 尺寸增大 1.5 倍:
-               原宽 60px -> 90px
-               原高 50px -> 75px
-            */
             width: 90px; 
             height: 75px; 
         }
         
         .clock-colon {
-            /* 冒号高度增大 1.5 倍:
-               原高 30px -> 45px
-            */
             height: 45px; 
+        }
+
+        /* ================= ☺ 左下角：跟随鼠标笑脸 ☺ ================= */
+        .face {
+            /* 核心修改：改为Fixed固定定位，位于左下角 */
+            position: fixed;
+            bottom: 10px; 
+            left: 10px;
+            z-index: 99999; /* 确保在最上层 */
+            
+            /* 尺寸与缩放：原尺寸300px太大，这里缩小为0.3倍 */
+            width: 300px;
+            height: 300px;
+            transform: scale(0.33); 
+            transform-origin: bottom left; /* 缩放基点设为左下角 */
+            
+            border-radius: 50%;
+            background: #ffcd00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); /* 加一点阴影增加立体感 */
+        }
+        
+        .face::before {
+            content: '';
+            position: absolute;
+            top: 180px;
+            width: 150px;
+            height: 70px;
+            background: #b57700;
+            border-bottom-left-radius: 70px;
+            border-bottom-right-radius: 70px;
+            transition: 0.5s;
+        }
+        
+        /* 鼠标悬停在脸上时（或者在页面操作时），可以根据需求调整交互 */
+        .face:hover::before {
+            top: 210px;
+            width: 150px;
+            height: 20px;
+            background: #b57700;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        
+        .eyes {
+            position: relative;
+            top: -40px;
+            display: flex;
+        }
+        
+        .eyes .eye {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            display: block;
+            background: #fff;
+            margin: 0 15px;
+            border-radius: 50%;
+        }
+        
+        .eyes .eye::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 25px; /* 眼珠位置 */
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: #000;
+            border-radius: 50%;
         }
 
     </style>
@@ -274,11 +342,12 @@
                 </div>
                 
                 <nav>
-                    <a href="pages/home.html">Home</a>
+                    <a href="index.html">Home</a>
                     <a href="pages/publication.html">Publication</a>
                     <a href="pages/contact.html">Contact</a>
                     <a href="pages/about.html">About</a>
                 </nav>
+                
             </div>
         </div>
     </header>
@@ -300,7 +369,9 @@
                         <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a>
                     </div>
                 </div>
-                <strong>On Building</strong>
+                <span aria-hidden="true">🌸</span>
+                <strong class="TNR">Let life be beautiful like summer flowers <br>and death like autumn leaves.✨
+                </strong>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-12">
@@ -321,6 +392,13 @@
     <ul class="love-sidebar">
         <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
     </ul>
+
+    <div class="face">
+        <div class="eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+    </div>
 
     <div class="clock-sidebar">
         <canvas class="clock"></canvas>
@@ -361,28 +439,14 @@
         var timestr = "";
         var particleArray = [];
         
-        /* 莫兰迪全彩渐变色谱 (8个元素):
-           每个数字颜色都不一样，两组冒号保持一致。
-           色调走向：蓝灰 -> 灰绿 -> 暖黄 -> 陶土红
-        */
         var colors = [
-            "#7E96B5", // [0] 时1: 雾霾深蓝 (Dusty Blue)
-            "#89A4A3", // [1] 时2: 鼠尾草灰蓝 (Sage Blue)
-            "#A9A9A9", // [2] 冒号: 中性高级灰 (Neutral Grey)
-            "#A7BFA0", // [3] 分1: 橄榄灰绿 (Muted Olive)
-            "#D4C9A8", // [4] 分2: 亚麻暖沙色 (Linen Sand)
-            "#A9A9A9", // [5] 冒号: 中性高级灰 (与上一个冒号一致)
-            "#DBC4B3", // [6] 秒1: 烟粉陶土 (Dusty Clay)
-            "#E6B595"  // [7] 秒2: 暖焦糖色 (Warm Terracotta)
+            "#7E96B5", "#89A4A3", "#A9A9A9", "#A7BFA0", 
+            "#D4C9A8", "#A9A9A9", "#DBC4B3", "#E6B595" 
         ];
         var fonts = [];
 
-        function init() {
+        function initClock() {
             for (var i = 0; i < clocks.length; i++) {
-                /* 内部分辨率提升：
-                   为了配合 CSS 的 1.5 倍放大 (90x75px)，
-                   我们将内部 Canvas 尺寸设为 150x150，以保持粒子边缘锐利。
-                */
                 clocks[i].width = 150; 
                 clocks[i].height = 150;
                 ctx[i] = clocks[i].getContext("2d");
@@ -390,25 +454,18 @@
                 particleArray.push([]);
             }
 
-            // 生成数字形状
-            // 字体相应放大到 90px 以适应新的内部 Canvas 尺寸
             ctx[0].font = "bold 90px Arial"; 
             
             for (var i = 0; i <= 10; i++) {
                 var char = (i === 10) ? ":" : i.toString();
                 
                 ctx[0].clearRect(0, 0, 150, 150);
-                // 调整绘制位置，确保数字在 150x150 画布的中心
                 ctx[0].fillText(char, 20, 105); 
                 
                 var width = 150;
                 var height = 150;
                 var data = ctx[0].getImageData(0, 0, width, height).data;
-                var len = data.length;
                 var tdata = [];
-                
-                // 采样步进设为 4，平衡粒子数量和性能
-                // 因为画布变大了，如果步进太小，粒子会过多导致卡顿
                 var density = 4; 
                 for (var y = 0; y < height; y += density) {
                     for (var x = 0; x < width; x += density) {
@@ -428,19 +485,11 @@
             var h = ("0" + d.getHours()).slice(-2);
             var m = ("0" + d.getMinutes()).slice(-2);
             var s = ("0" + d.getSeconds()).slice(-2);
-            
-            return [
-                h.charAt(0), h.charAt(1), 
-                "10", 
-                m.charAt(0), m.charAt(1), 
-                "10", 
-                s.charAt(0), s.charAt(1)
-            ];
+            return [h[0], h[1], "10", m[0], m[1], "10", s[0], s[1]];
         }
 
         class Particle {
             constructor(x, y) {
-                // 初始位置在画布内随机
                 this.x = Math.random() * 150;
                 this.y = Math.random() * 150;
                 this.ex = x; 
@@ -453,7 +502,6 @@
             draw(i) {
                 ctx[i].fillStyle = colors[i];
                 ctx[i].beginPath();
-                // 粒子半径微调为 1.8，让其看起来更饱满
                 ctx[i].arc(this.x, this.y, 1.8, 0, Math.PI * 2);
                 ctx[i].fill();
             }
@@ -467,7 +515,7 @@
 
             if (diff > 0) {
                 for (var i = 0; i < diff; i++) {
-                    currentParticles.push(new Particle(75, 75)); // 从中心生成
+                    currentParticles.push(new Particle(75, 75)); 
                 }
             }
             if (diff < 0) {
@@ -480,12 +528,11 @@
             }
         }
 
-        function draw() {
+        function drawClock() {
             var timeArr = getFormattedTime();
             
             for (var i = 0; i < clocks.length; i++) {
                 var charIndex = parseInt(timeArr[i]);
-                
                 if (!timestr || timestr[i] != timeArr[i]) {
                     change(charIndex, i);
                 }
@@ -494,7 +541,6 @@
 
             for (var i = 0; i < clocks.length; i++) {
                 ctx[i].clearRect(0, 0, 150, 150);
-                
                 for (var j = 0; j < particleArray[i].length; j++) {
                     var p = particleArray[i][j];
                     p.update();
@@ -503,8 +549,31 @@
             }
         }
 
-        init();
-        setInterval(draw, 30); 
+        initClock();
+        setInterval(drawClock, 30); 
+
+        // ================= ☺ 左下角：笑脸跟随鼠标逻辑 ☺ =================
+        // 为了避免变量冲突，我们将这部分逻辑独立放在最后
+        document.addEventListener("mousemove", eyeball);
+
+        function eyeball(event) {
+            'use strict';
+            var eye = document.querySelectorAll(".eye");
+            eye.forEach(function (eye) {
+                // 计算眼球的中心点
+                let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+                let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+                
+                // 计算鼠标与眼球中心的角度
+                let radian = Math.atan2(event.pageX - x, event.pageY - y);
+                
+                // 转换为旋转角度
+                let rot = (radian * (180 / Math.PI) * -1) + 270;
+                
+                // 应用样式
+                eye.style.transform  = "rotate("+ rot +"deg)";
+            })
+        }
     </script>
 </body>
 

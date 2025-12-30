@@ -16,15 +16,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
 
     <style>
+        /* ================= 全局基础样式 ================= */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f9f9f9;
             color: #333;
             margin: 0;
             padding: 0;
+            /* 防止侧边栏过长导致双重滚动条 */
+            overflow-x: hidden; 
         }
 
-        /* --- 导航栏 --- */
+        /* ================= 导航栏 ================= */
         header {
             position: absolute;
             top: 0;
@@ -86,20 +89,18 @@
             width: 100%;
         }
 
-        /* --- 主内容区域 --- */
+        /* ================= 主内容区域 ================= */
         .main-wrapper {
-            padding-top: 140px; /* 增加顶部留白 */
+            padding-top: 140px;
             padding-bottom: 60px;
             min-height: 100vh;
         }
 
-        /* --- 个人信息区域 (新增) --- */
         .profile-section {
-            margin-bottom: 50px; /* 与下方轮播图的间距 */
+            margin-bottom: 50px;
             text-align: center;
         }
 
-        /* 头像样式 */
         .avatar-container {
             width: 150px;
             height: 150px;
@@ -112,7 +113,7 @@
         }
 
         .avatar-container:hover {
-            transform: scale(1.05); /* 鼠标悬停轻微放大 */
+            transform: scale(1.05);
         }
 
         .avatar-container img {
@@ -128,11 +129,10 @@
             color: #222;
         }
 
-        /* 社交图标样式 */
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 25px; /* 图标间距 */
+            gap: 25px;
         }
 
         .social-links a {
@@ -156,7 +156,7 @@
             transform: translateY(-3px);
         }
 
-        /* --- 轮播图样式 --- */
+        /* ================= 轮播图样式 ================= */
         .active-works-carousel .item {
             margin: 0 15px;
             border-radius: 12px;
@@ -170,7 +170,7 @@
         }
 
         .thumb {
-            height: 350px; /* 稍微调小一点轮播图高度，突出个人信息 */
+            height: 440px; 
             width: 100%;
             background-size: cover;
             background-position: center;
@@ -189,7 +189,78 @@
             .main-wrapper {
                 padding-top: 180px;
             }
+            /* 移动端隐藏侧边栏，防止遮挡 */
+            .love-sidebar, .clock-sidebar {
+                display: none !important;
+            }
         }
+
+        /* ================= 左侧：爱心动画 (西) ================= */
+        .love-sidebar {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            display: flex;
+            height: 200px; 
+            z-index: 9999;
+            padding: 0;
+            margin: 0;
+        }
+
+        .love-sidebar li {
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            margin: 0 10px;
+        }
+
+        .love-sidebar li:nth-child(1) { background-color: #6D8299; animation: love1 2.5s 0s infinite; }
+        .love-sidebar li:nth-child(2) { background-color: #8CA090; animation: love2 2.5s 0.1s infinite; }
+        .love-sidebar li:nth-child(3) { background-color: #C3C0A7; animation: love3 2.5s 0.2s infinite; }
+        .love-sidebar li:nth-child(4) { background-color: #E6DCCD; animation: love4 2.5s 0.3s infinite; }
+        .love-sidebar li:nth-child(5) { background-color: #D3A29D; animation: love5 2.5s 0.4s infinite; }
+        .love-sidebar li:nth-child(6) { background-color: #BFA6A8; animation: love4 2.5s 0.5s infinite; }
+        .love-sidebar li:nth-child(7) { background-color: #9E908D; animation: love3 2.5s 0.6s infinite; }
+        .love-sidebar li:nth-child(8) { background-color: #7D7D7D; animation: love2 2.5s 0.7s infinite; }
+        .love-sidebar li:nth-child(9) { background-color: #53626F; animation: love1 2.5s 0.8s infinite; }
+
+        @keyframes love1 { 30%, 50% { height: 60px; transform: translateY(-30px); } 70%, 100% { height: 20px; transform: translateY(0); } }
+        @keyframes love2 { 30%, 50% { height: 125px; transform: translateY(-60px); } 70%, 100% { height: 20px; transform: translateY(0); } }
+        @keyframes love3 { 30%, 50% { height: 160px; transform: translateY(-75px); } 70%, 100% { height: 20px; transform: translateY(0); } }
+        @keyframes love4 { 30%, 50% { height: 180px; transform: translateY(-60px); } 70%, 100% { height: 20px; transform: translateY(0); } }
+        @keyframes love5 { 30%, 50% { height: 200px; transform: translateY(-45px); } 70%, 100% { height: 20px; transform: translateY(0); } }
+
+        /* ================= 右侧：粒子时钟 (东) ================= */
+        .clock-sidebar {
+            position: fixed;
+            top: 50%;
+            right: 15px; 
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            z-index: 9999;
+            gap: 2px; /* 微调间距 */
+        }
+        
+        .clock {
+            /* 尺寸增大 1.5 倍:
+               原宽 60px -> 90px
+               原高 50px -> 75px
+            */
+            width: 90px; 
+            height: 75px; 
+        }
+        
+        .clock-colon {
+            /* 冒号高度增大 1.5 倍:
+               原高 30px -> 45px
+            */
+            height: 45px; 
+        }
+
     </style>
 </head>
 
@@ -223,51 +294,43 @@
                     </div>
 
                     <div class="social-links">
-                        <a href="mailto:firstcoolsdx@gmail.com" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        
-                        <a href="https://scholar.google.com/citations?user=Lb1zgfEAAAAJ" target="_blank" title="Google Scholar">
-                            <i class="ai ai-google-scholar"></i>
-                        </a>
-
-                        <a href="https://github.com/DianxingShi" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-
-                        <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" title="ORCID">
-                            <i class="ai ai-orcid"></i>
-                        </a>
+                        <a href="mailto:firstcoolsdx@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://scholar.google.com/citations?user=Lb1zgfEAAAAJ" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                        <a href="https://github.com/DianxingShi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a>
                     </div>
                 </div>
-				<strong>On Building</strong>
+                <strong>On Building</strong>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="active-works-carousel owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="thumb" style="background-image: url('pages/img/1.jpg');"></div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb" style="background-image: url('pages/img/2.jpg');"></div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb" style="background-image: url('pages/img/3.jpg');"></div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb" style="background-image: url('pages/img/4.jpg');"></div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb" style="background-image: url('pages/img/5.jpg');"></div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb" style="background-image: url('pages/img/6.gif');"></div>
-                        </div>
+                        <div class="item"><div class="thumb" style="background-image: url('pages/img/1.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('pages/img/2.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('pages/img/3.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('pages/img/4.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('pages/img/5.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('pages/img/6.gif');"></div></div>
                     </div>
                 </div>
             </div>
 
         </section>
+    </div>
+
+    <ul class="love-sidebar">
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+    </ul>
+
+    <div class="clock-sidebar">
+        <canvas class="clock"></canvas>
+        <canvas class="clock"></canvas>
+        <canvas class="clock clock-colon"></canvas>
+        <canvas class="clock"></canvas>
+        <canvas class="clock"></canvas>
+        <canvas class="clock clock-colon"></canvas>
+        <canvas class="clock"></canvas>
+        <canvas class="clock"></canvas>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -291,6 +354,157 @@
                 }
             });
         });
+
+        // ================= 粒子时钟逻辑 (1.5倍大 & 莫兰迪全彩) =================
+        var clocks = document.getElementsByClassName("clock");
+        var ctx = [];
+        var timestr = "";
+        var particleArray = [];
+        
+        /* 莫兰迪全彩渐变色谱 (8个元素):
+           每个数字颜色都不一样，两组冒号保持一致。
+           色调走向：蓝灰 -> 灰绿 -> 暖黄 -> 陶土红
+        */
+        var colors = [
+            "#7E96B5", // [0] 时1: 雾霾深蓝 (Dusty Blue)
+            "#89A4A3", // [1] 时2: 鼠尾草灰蓝 (Sage Blue)
+            "#A9A9A9", // [2] 冒号: 中性高级灰 (Neutral Grey)
+            "#A7BFA0", // [3] 分1: 橄榄灰绿 (Muted Olive)
+            "#D4C9A8", // [4] 分2: 亚麻暖沙色 (Linen Sand)
+            "#A9A9A9", // [5] 冒号: 中性高级灰 (与上一个冒号一致)
+            "#DBC4B3", // [6] 秒1: 烟粉陶土 (Dusty Clay)
+            "#E6B595"  // [7] 秒2: 暖焦糖色 (Warm Terracotta)
+        ];
+        var fonts = [];
+
+        function init() {
+            for (var i = 0; i < clocks.length; i++) {
+                /* 内部分辨率提升：
+                   为了配合 CSS 的 1.5 倍放大 (90x75px)，
+                   我们将内部 Canvas 尺寸设为 150x150，以保持粒子边缘锐利。
+                */
+                clocks[i].width = 150; 
+                clocks[i].height = 150;
+                ctx[i] = clocks[i].getContext("2d");
+                ctx[i].fillStyle = colors[i];
+                particleArray.push([]);
+            }
+
+            // 生成数字形状
+            // 字体相应放大到 90px 以适应新的内部 Canvas 尺寸
+            ctx[0].font = "bold 90px Arial"; 
+            
+            for (var i = 0; i <= 10; i++) {
+                var char = (i === 10) ? ":" : i.toString();
+                
+                ctx[0].clearRect(0, 0, 150, 150);
+                // 调整绘制位置，确保数字在 150x150 画布的中心
+                ctx[0].fillText(char, 20, 105); 
+                
+                var width = 150;
+                var height = 150;
+                var data = ctx[0].getImageData(0, 0, width, height).data;
+                var len = data.length;
+                var tdata = [];
+                
+                // 采样步进设为 4，平衡粒子数量和性能
+                // 因为画布变大了，如果步进太小，粒子会过多导致卡顿
+                var density = 4; 
+                for (var y = 0; y < height; y += density) {
+                    for (var x = 0; x < width; x += density) {
+                        var index = (y * width + x) * 4;
+                        if (data[index + 3] > 128) { 
+                            tdata.push([x, y]);
+                        }
+                    }
+                }
+                fonts.push(tdata);
+            }
+            ctx[0].clearRect(0, 0, 150, 150);
+        }
+
+        function getFormattedTime() {
+            var d = new Date();
+            var h = ("0" + d.getHours()).slice(-2);
+            var m = ("0" + d.getMinutes()).slice(-2);
+            var s = ("0" + d.getSeconds()).slice(-2);
+            
+            return [
+                h.charAt(0), h.charAt(1), 
+                "10", 
+                m.charAt(0), m.charAt(1), 
+                "10", 
+                s.charAt(0), s.charAt(1)
+            ];
+        }
+
+        class Particle {
+            constructor(x, y) {
+                // 初始位置在画布内随机
+                this.x = Math.random() * 150;
+                this.y = Math.random() * 150;
+                this.ex = x; 
+                this.ey = y; 
+            }
+            update() {
+                this.x -= (this.x - this.ex) / 5; 
+                this.y -= (this.y - this.ey) / 5;
+            }
+            draw(i) {
+                ctx[i].fillStyle = colors[i];
+                ctx[i].beginPath();
+                // 粒子半径微调为 1.8，让其看起来更饱满
+                ctx[i].arc(this.x, this.y, 1.8, 0, Math.PI * 2);
+                ctx[i].fill();
+            }
+        }
+
+        function change(charIndex, clockIndex) {
+            var targetPoints = fonts[charIndex];
+            var currentParticles = particleArray[clockIndex];
+            
+            var diff = targetPoints.length - currentParticles.length;
+
+            if (diff > 0) {
+                for (var i = 0; i < diff; i++) {
+                    currentParticles.push(new Particle(75, 75)); // 从中心生成
+                }
+            }
+            if (diff < 0) {
+                currentParticles.splice(0, -diff);
+            }
+
+            for (var i = 0; i < targetPoints.length; i++) {
+                currentParticles[i].ex = targetPoints[i][0];
+                currentParticles[i].ey = targetPoints[i][1];
+            }
+        }
+
+        function draw() {
+            var timeArr = getFormattedTime();
+            
+            for (var i = 0; i < clocks.length; i++) {
+                var charIndex = parseInt(timeArr[i]);
+                
+                if (!timestr || timestr[i] != timeArr[i]) {
+                    change(charIndex, i);
+                }
+            }
+            timestr = timeArr;
+
+            for (var i = 0; i < clocks.length; i++) {
+                ctx[i].clearRect(0, 0, 150, 150);
+                
+                for (var j = 0; j < particleArray[i].length; j++) {
+                    var p = particleArray[i][j];
+                    p.update();
+                    p.draw(i);
+                }
+            }
+        }
+
+        init();
+        setInterval(draw, 30); 
     </script>
 </body>
 

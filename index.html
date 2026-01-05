@@ -698,7 +698,7 @@
                         // 计算速度因子
                         s = Math.min(0.005 * (v.speedX * v.speedX + v.speedY * v.speedY), 1);
                         
-                        if (f.length < h && s > 0.002) {
+                        if (f.length < h && s > 0.005) {
                             var count = (1 * Math.random() | 0) + (5 * s | 0); 
                             
                             // [修改点 2] 减少扩散: 降低 s (速度) 的系数

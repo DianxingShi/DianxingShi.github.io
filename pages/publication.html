@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Dianxing Shi</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' x='50%' text-anchor='middle' font-size='90'>😉</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; 
+        }
+
+        /* ================= 导航栏 ================= */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background: transparent;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-weight: 700;
+            font-size: 22px;
+            color: #222;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a.active {
+            color: #000;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        /* ================= 主内容区域 ================= */
+        .main-wrapper {
+            padding-top: 150px;
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ================= BibBase 样式定制 ================= */
+        #bibbase_header { display: none; }
+
+        .bibbase_paper {
+            margin-bottom: 25px !important;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .bibbase_paper:last-child { border-bottom: none; }
+
+        .bibbase_paper_title {
+            font-weight: 600 !important;
+            font-size: 1.1rem;
+            color: #222;
+            display: block;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        .bibbase_paper_title a {
+            color: #222 !important;
+            text-decoration: none;
+        }
+        
+        .bibbase_paper_title a:hover {
+            color: #007bff !important;
+            text-decoration: underline;
+        }
+
+        .bibbase_paper_author {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* 强制禁用作者链接 */
+        .bibbase_paper_author a {
+            color: inherit !important;       
+            text-decoration: none !important; 
+            pointer-events: none;            
+            cursor: text;                    
+        }
+
+        /* 你的名字高亮样式 */
+        .bibbase_paper_author strong {
+            color: #000;
+            font-weight: 700;
+            background-color: rgba(0,0,0,0.05); /* 可选：加一点极淡的背景 */
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .bibbase_paper_content {
+            color: #777;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 3px;
+        }
+
+        .well {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            border-radius: 4px;
+        }
+
+        #loading-message {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; }
+            nav { margin-top: 15px; gap: 15px; }
+            .main-wrapper { padding-top: 180px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">DIANXING SHI</a>
+                </div>
+                
+                <nav>
+                    <a href="../index.html">Home</a>
+                    <a href="publication.html" class="active">Publication</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="about.html">About</a>
+                    <a href="art.html">ART</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <section class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="page-title">Publications</h2>
+
+                    <div id="loading-message">
+                        <i class="fas fa-spinner fa-spin"></i> Loading publications library...
+                    </div>
+
+                    <script src="https://bibbase.org/show?bib=https%3A%2F%2Fraw.githubusercontent.com%2FDianxingShi%2FDianxingShi.github.io%2Frefs%2Fheads%2Fmain%2Fpubs.bib&commas=true&noBootstrap=1&jsonp=1"></script>
+                
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 定义需要高亮的名字变体 (根据你的 bib 文件写法)
+        const myNames = [
+            "Dianxing Shi", 
+            "Shi, Dianxing", 
+            "Shi, D.", 
+            "D. Shi"
+        ];
+
+        function highlightMyName() {
+            // 获取所有的作者栏
+            var authors = document.querySelectorAll('.bibbase_paper_author');
+            
+            authors.forEach(function(el) {
+                var html = el.innerHTML;
+                
+                // 遍历所有名字变体进行替换
+                myNames.forEach(function(name) {
+                    // 如果已经加粗过了，就跳过
+                    if (html.indexOf('<strong>' + name + '</strong>') === -1) {
+                        // 全局替换
+                        var regex = new RegExp(name, "g");
+                        html = html.replace(regex, "<strong>" + name + "</strong>");
+                    }
+                });
+                
+                el.innerHTML = html;
+            });
+        }
+
+        // 监听 BibBase 加载
+        var checkExist = setInterval(function() {
+            var content = document.querySelector('.bibbase_paper');
+            if (content) {
+                // 1. 隐藏 loading
+                document.getElementById('loading-message').style.display = 'none';
+                
+                // 2. 执行高亮名字
+                highlightMyName();
+                
+                // 3. 停止检测 (如果你的列表很长，且 BibBase 是分批加载的，可以把 clearInterval 注释掉，让它一直检查)
+                clearInterval(checkExist);
+            }
+        }, 500); // 每 0.5 秒检查一次
+    </script>
+</body>
+</html>

@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dianxing Shi (时点星)</title>
+    <title>Dianxing Shi</title>
     
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' x='50%' text-anchor='middle' font-size='75'>😉</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
 
@@ -26,7 +24,6 @@
             color: #333;
             margin: 0;
             padding: 0;
-            /* 防止侧边栏过长导致双重滚动条 */
             overflow-x: hidden; 
         }
 
@@ -159,27 +156,6 @@
             transform: translateY(-3px);
         }
 
-        /* ================= 轮播图样式 ================= */
-        .active-works-carousel .item {
-            margin: 0 15px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-
-        .active-works-carousel .item:hover {
-            transform: translateY(-5px);
-        }
-
-        .thumb {
-            height: 440px; 
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
         /* 移动端适配 */
         @media (max-width: 768px) {
             .header-content {
@@ -192,18 +168,19 @@
             .main-wrapper {
                 padding-top: 180px;
             }
-            /* 移动端隐藏侧边栏，防止遮挡 */
             .love-sidebar, .clock-sidebar, .face, #mouser {
                 display: none !important;
             }
         }
 
-        /* ================= 左侧：爱心动画 (西) ================= */
+        /* ================= 左侧：爱心动画 (西) - 修改版 ================= */
         .love-sidebar {
             position: fixed;
             top: 50%;
             left: 10px;
-            transform: translateY(-50%);
+            /* 修改：增加 scale(0.75) 缩小至75%，并设置变换原点为左侧 */
+            transform: translateY(-50%) scale(0.75);
+            transform-origin: left center;
             display: flex;
             height: 200px; 
             z-index: 9999;
@@ -326,17 +303,6 @@
             border-radius: 50%;
         }
 
-        /* 流星特效画布样式 */
-        #mouser {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 999; 
-            pointer-events: none; 
-        }
-
     </style>
 </head>
 
@@ -346,7 +312,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="pages/home.html">DIANXING SHI</a>
+                    <a href="pages/home.html">DIANXING SHI (时点星)</a>
                 </div>
                 
                 <nav>
@@ -354,6 +320,7 @@
                     <a href="pages/publication.html">Publication</a>
                     <a href="pages/contact.html">Contact</a>
                     <a href="pages/about.html">About</a>
+                    <a href="pages/art.html">ART</a>
                 </nav>
                 
             </div>
@@ -385,24 +352,24 @@
                 <span style="font-family:'Times New Roman', Times, serif;color:#000;">
                     HFUT .BS&nbsp;&nbsp;&nbsp;&nbsp;2018-2022<br>
                     BRIUG .MS&nbsp;&nbsp;&nbsp;&nbsp;2023-2026<br>
-                    OsakaU .PhD candidate&nbsp;&nbsp;&nbsp;&nbsp;2026-
+                    <!-- OsakaU .PhD candidate&nbsp;&nbsp;&nbsp;&nbsp;2026- -->
                 </span></strong>
                 <p style="font-family:'Times New Roman', Times, serif;">Artificial Intelligence;&nbsp;&nbsp;Machine Learning;&nbsp;&nbsp;Computer Vision;&nbsp;&nbsp;Large Language Model;&nbsp;&nbsp;Agent</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="active-works-carousel owl-carousel owl-theme">
-                        <div class="item"><div class="thumb" style="background-image: url('pages/img/1.jpg');"></div></div>
-                        <div class="item"><div class="thumb" style="background-image: url('pages/img/2.jpg');"></div></div>
-                        <div class="item"><div class="thumb" style="background-image: url('pages/img/3.jpg');"></div></div>
-                        <div class="item"><div class="thumb" style="background-image: url('pages/img/4.jpg');"></div></div>
-                        <div class="item"><div class="thumb" style="background-image: url('pages/img/5.jpg');"></div></div>
-                        <div class="item"><div class="thumb" style="background-image: url('pages/img/6.jpg');"></div></div>
-                    </div>
-                </div>
-            </div>
+                <br>
 
-        </section>
+
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p style="font-family:'Times New Roman', Times, serif;color:#000;font-size: 28px;">News</p>
+            <p >
+                <span style="font-family:'Times New Roman', Times, serif;color:#000000;">•</span>
+                                <span style="font-family:'Times New Roman', Times, serif;color: #0000FF;">2026.01</span>
+            <span
+            style="font-family:'Times New Roman', Times, serif;color:#000000;">
+            — My  first-author paper [Can Synthetic Images Serve as Effective and Efficient Class Prototypes? ] is accepted to IEEE ICASSP'26 🎉</span></p>
     </div>
 
     <ul class="love-sidebar">
@@ -427,30 +394,9 @@
         <canvas class="clock"></canvas>
     </div>
     
-    <canvas id="mouser"></canvas>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
+    
     <script>
-        $(document).ready(function(){
-            $(".active-works-carousel").owlCarousel({
-                items: 3,
-                loop: true,
-                margin: 0,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                smartSpeed: 800,
-                center: true,
-                responsive: {
-                    0: { items: 1 },
-                    768: { items: 2 },
-                    992: { items: 3 }
-                }
-            });
-        });
-
         // ================= 粒子时钟逻辑 =================
         var clocks = document.getElementsByClassName("clock");
         var ctx = [];
@@ -585,266 +531,8 @@
             })
         }
 
-// ================= 绚丽流星鼠标拖尾 (修改版 - 莫兰迪彩虹色 & 短拖尾) =================
-(function() {
-            var canvas = document.getElementById("mouser");
-            var ctx = canvas.getContext("2d");
-            var width = window.innerWidth;
-            var height = window.innerHeight;
+        // ================= 绚丽流星鼠标拖尾已删除 =================
 
-            canvas.width = width;
-            canvas.height = height;
-
-            window.addEventListener('resize', function() {
-                width = window.innerWidth;
-                height = window.innerHeight;
-                canvas.width = width;
-                canvas.height = height;
-            });
-
-            // Stage Class
-            var Stage = function() {
-                function t() {
-                    this.renderList = [];
-                    this.needClear = true;
-                }
-                var requestAnimationFrame = window.requestAnimationFrame || 
-                                            window.webkitRequestAnimationFrame || 
-                                            window.mozRequestAnimationFrame || 
-                                            function(cb) { window.setTimeout(cb, 1000 / 60); };
-                
-                t.prototype.update = function() {
-                    var t = this;
-                    if (t.needClear) {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    }
-                    t.renderList.forEach(function(n) {
-                        n(ctx, canvas);
-                    });
-                    requestAnimationFrame(function() {
-                        t.update();
-                    });
-                };
-                t.prototype.onUpdate = function(t) {
-                    this.renderList.push(t);
-                };
-                return t;
-            }();
-
-            // Twinkle Class (流星/闪烁逻辑)
-            var Twinkle = function() {
-                function t(t, e, a) {
-                    this.initSymbols(t, e, a);
-                    this.particles = [];
-                    this._pool = [];
-                    this.mouse = new s();
-                }
-                function s(t, s) {
-                    this.x = t || 0;
-                    this.y = s || 0;
-                    this.speedX = 0;
-                    this.speedY = 0;
-                }
-                // e 是符号容器，现在支持多色
-                function e(t, s, e) {
-                    this.colors = [];
-                    // 解析传入的颜色数组
-                    if (Array.isArray(t)) {
-                        for(var k=0; k<t.length; k++) {
-                            this.colors.push(n(t[k]));
-                        }
-                    } else {
-                        this.colors.push(n(t));
-                    }
-                    
-                    this.size = 2 * (s + e);
-                    
-                    // 为每种颜色生成所有尺寸的星星
-                    for (var c = 0; c < this.colors.length; c++) {
-                        var currentColor = this.colors[c];
-                        for (var a = 0, i = o.length; i > a; a++) {
-                            this.push(this._createSymbol(o[a], s, e, currentColor));
-                        }
-                    }
-                }
-                function a() {
-                    this.init();
-                }
-                
-                function i(t, s, e, a, i) {
-                    return "rgba" === t ? "rgba(" + s + "," + e + "," + a + "," + i + ")" : "hsla" === t ? "hsla(" + s + "," + e + "%," + a + "%," + i + ")" : "";
-                }
-                
-                var o = [4, 6, 8, 10, 12]; 
-                var h = 2500; 
-                
-                t.prototype = {
-                    mouse: null,
-                    gravity: 0.035,
-                    initSymbols: function(t, s, a) {
-                        this._symbols = new e(t, s, a);
-                    },
-                    render: function(t) {
-                        var s, e, a, i, o, n, r, l, p, c, d, m, u, y, g;
-                        var f = this.particles;
-                        var v = this.mouse;
-                        var b = this.gravity;
-                        var M = this._symbols;
-                        var x = this._symbols.length;
-                        var _ = this._symbols.size;
-                        var w = 0.5 * this._symbols.size;
-                        var I = t.canvas.width;
-                        var $ = t.canvas.height;
-                        
-                        // 计算速度因子
-                        s = Math.min(0.005 * (v.speedX * v.speedX + v.speedY * v.speedY), 1);
-                        
-                        if (f.length < h && s > 0.005) {
-                            var count = (1 * Math.random() | 0) + (5 * s | 0); 
-                            
-                            // [修改点 2] 减少扩散: 降低 s (速度) 的系数
-                            // 原来是: e = 0.2 + 2.0 * s; a = 0.05 + 0.2 * s;
-                            // 改为更小的值，让粒子在快速移动时不要散太开
-                            e = 0.1 + 0.8 * s; 
-                            a = 0.02 + 0.1 * s; 
-                            i = 0.5 + 0.5 * s;
-                            
-                            for (u = 0; u < count; u++) {
-                                this._createParticle(a, e, i);
-                            }
-                        }
-                        
-                        for (p = 0.5 * -I, c = 1.5 * I, d = 0.5 * -$, m = 1.5 * $, u = 0, y = f.length; y > u; u++) {
-                            g = f[u];
-                            g.vx += 0.03 * v.speedX * s;
-                            g.vy += 0.03 * v.speedY * s + b;
-                            g.x += g.vx + v.speedX;
-                            g.y += g.vy + v.speedY;
-                            
-                            // [修改点 3] 缩短拖尾长度
-                            // 原来是 0.005。为了变成原来的 3/5 长度，需要增加衰减速度。
-                            // 0.005 / 0.6 ≈ 0.0083
-                            g.scale -= 0.01; 
-                            
-                            g.angle += Math.random();
-                            
-                            if (g.x + w < p || g.x - w > c || g.y + w < d || g.y - w > m || g.scale <= 0) {
-                                this._pool.push(g);
-                                f.splice(u, 1);
-                                y--;
-                                u--;
-                            } else {
-                                l = g.scale;
-                                // 随机选取预生成的带颜色的星星
-                                o = M[x * Math.random() | 0]; 
-                                if (Math.random() < 0.7) l *= 0.2; 
-                                n = _ * l;
-                                r = 0.5 * n;
-                                t.save();
-                                t.globalCompositeOperation = "lighter";
-                                t.translate(g.x, g.y);
-                                t.rotate(g.angle);
-                                t.drawImage(o, 0, 0, _, _, -r, -r, n, n);
-                                t.restore();
-                            }
-                        }
-                        v.speedX = v.speedY = 0;
-                    },
-                    _createParticle: function(t, s, e) {
-                        var i = t + (s - t) * Math.random();
-                        var o = 2 * Math.PI * Math.random();
-                        var h = this._pool.length ? this._pool.shift() : new a();
-                        h.init(this.mouse.x, this.mouse.y, i * Math.cos(o), i * Math.sin(o), e * Math.random(), 2 * Math.PI * Math.random());
-                        this.particles.push(h);
-                    }
-                };
-                
-                s.prototype = {
-                    update: function(t, s) {
-                        this.speedX = 0.7 * (this.x - t);
-                        this.speedY = 0.7 * (this.y - s);
-                        this.x = t;
-                        this.y = s;
-                    }
-                };
-                
-                e.prototype = [];
-                e.prototype._createSymbol = function(t, s, e, colorArr) {
-                    var a, o, h = this.size, n = this.size / 2;
-                    a = document.createElement("canvas");
-                    a.width = a.height = h;
-                    o = a.getContext("2d");
-                    var r = colorArr; 
-                    o.fillStyle = i(r[0], r[1], r[2], r[3], r[4]);
-                    o.shadowBlur = e;
-                    o.shadowColor = i(r[0], r[1], r[2], r[3], 0.75 * r[4]);
-                    var l, p, c, d;
-                    o.beginPath();
-                    for (l = 1, p = 2 * t; p >= l; l++) {
-                        c = l % 2 ? 0.1 * s : s;
-                        d = 2 * Math.PI * l / p;
-                        o[1 === l ? "moveTo" : "lineTo"](n + c * Math.cos(d), n + c * Math.sin(d));
-                    }
-                    o.fill();
-                    return a;
-                };
-                
-                a.prototype.init = function(t, s, e, a, i, o) {
-                    this.x = t || 0;
-                    this.y = s || 0;
-                    this.vx = e || 0;
-                    this.vy = a || 0;
-                    this.scale = i || 0;
-                    this.angle = o || 0;
-                };
-                
-                var n = function() {
-                    var t = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/;
-                    var s = /^rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d\.]+)\s*\)$/;
-                    var e = /^hsl\(\s*([\d\.]+)\s*,\s*([\d\.]+)%\s*,\s*([\d\.]+)%\s*\)$/;
-                    var a = /^hsla\(\s*([\d\.]+)\s*,\s*([\d\.]+)%\s*,\s*([\d\.]+)%\s*,\s*([\d\.]+)\s*\)$/;
-                    var i = /^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/;
-                    return function(o) {
-                        o = o.replace(/^\s*#|\s*$/g, "").toLowerCase();
-                        var h;
-                        if (h = o.match(t) || o.match(s)) return ["rgba", parseInt(h[1], 10), parseInt(h[2], 10), parseInt(h[3], 10), parseFloat(4 === h.length ? 1 : h[4])];
-                        if (h = o.match(e) || o.match(a)) return ["hsla", parseFloat(h[1]), parseFloat(h[2]), parseFloat(h[3]), parseFloat(4 === h.length ? 1 : h[4])];
-                        if (3 === o.length) o = o.replace(/(.)/g, "$1$1");
-                        if (h = o.match(i)) return ["rgba", parseInt(h[1], 16), parseInt(h[2], 16), parseInt(h[3], 16), 1];
-                        return null;
-                    };
-                }();
-                
-                return t;
-            }();
-
-            // 启动特效
-            var v = new Stage();
-            
-            // [修改点 1] 莫兰迪彩虹色系 (稍微提亮，增加辨识度)
-            var morandiRainbow = [
-                "#F091A0", // 莫兰迪红/粉 (稍艳)
-                "#FABD7C", // 莫兰迪橙 (暖杏)
-                "#F6E28C", // 莫兰迪黄 (姜黄亮色)
-                "#A6D6A7", // 莫兰迪绿 (抹茶亮色)
-                "#92BBD9", // 莫兰迪蓝 (灰蓝亮色)
-                "#BCAAD6"  // 莫兰迪紫 (香芋紫)
-            ];
-            
-            // 传入颜色数组
-            var m = new Twinkle(morandiRainbow, 14, 1); 
-            
-            m.mouse.update(0, 0);
-            window.addEventListener('mousemove', function(e) {
-                m.mouse.update(e.clientX, e.clientY);
-            });
-            
-            v.onUpdate(function(e) {
-                m.render(e);
-            });
-            v.update();
-        })();
     </script>
 </body>
-
 </html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ART - Dianxing Shi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; 
+        }
+
+        /* ================= 导航栏 (保持与主页一致) ================= */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background: transparent;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-weight: 700;
+            font-size: 22px;
+            color: #222;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        /* 高亮当前页面 */
+        nav a.active {
+            color: #000;
+            font-weight: 700;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        /* ================= 主内容区域 ================= */
+        .main-wrapper {
+            padding-top: 150px; /* 稍微增加顶部间距以适应内容 */
+            padding-bottom: 60px;
+            min-height: 100vh;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* ================= 轮播图样式 (迁移过来) ================= */
+        .active-works-carousel .item {
+            margin: 0 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .active-works-carousel .item:hover {
+            transform: translateY(-5px);
+        }
+
+        .thumb {
+            height: 500px; /* 可以在这里调整图片显示高度 */
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            nav {
+                margin-top: 15px;
+                gap: 15px;
+            }
+            .main-wrapper {
+                padding-top: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">DIANXING SHI</a>
+                </div>
+                
+                <nav>
+                    <a href="../index.html">Home</a>
+                    <a href="publication.html">Publication</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="about.html">About</a>
+                    <a href="art.html" class="active">ART</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <section class="container">
+            <h2 class="page-title">ART GALLERY</h2>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="active-works-carousel owl-carousel owl-theme">
+                        <div class="item"><div class="thumb" style="background-image: url('img/1.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('img/2.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('img/3.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('img/4.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('img/5.jpg');"></div></div>
+                        <div class="item"><div class="thumb" style="background-image: url('img/6.jpg');"></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".active-works-carousel").owlCarousel({
+                items: 3,
+                loop: true,
+                margin: 0,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                smartSpeed: 800,
+                center: true,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 },
+                    992: { items: 3 }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+/* ================= 全局基础样式 ================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.TNR {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* ================= 导航栏 ================= */
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 25px 0;
+    background: transparent;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-weight: 700;
+    font-size: 22px;
+    color: #222;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a.active {
+    color: #000;
+    font-weight: 700;
+}
+
+nav a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+/* ================= 主内容区域 ================= */
+.main-wrapper {
+    padding-top: 140px;
+    padding-bottom: 60px;
+    min-height: 100vh;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+/* ================= 研究兴趣标签 (Morandi Badges) ================= */
+.interests-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0 35px 0;
+}
+
+.interest-badge {
+    /* ==== 缩放接口: 修改此数值即可全局调整大小 (当前 0.6 = 60%, 即缩小 40%) ==== */
+    --badge-scale: 0.80;
+
+    padding: calc(8px * var(--badge-scale)) calc(18px * var(--badge-scale));
+    border-radius: 4px;
+
+    /* 字体改为新罗马 */
+    font-family: 'Times New Roman', Times, serif;
+
+    /* 字体大小随比例缩放 (基准 1rem 略大，适合缩小后的比例) */
+    font-size: calc(1rem * var(--badge-scale));
+
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: inline-block;
+}
+
+.interest-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Morandi Palette - Muted, Elegant, High Readability for Black Text */
+.morandi-blue {
+    background-color: #B4C6D3;
+    /* 雾霾蓝 */
+}
+
+.morandi-green {
+    background-color: #B8C7B3;
+    /* 灰豆绿 */
+}
+
+.morandi-beige {
+    background-color: #DBCBB9;
+    /* 暖卡其 */
+}
+
+.morandi-pink {
+    background-color: #D9C3C2;
+    /* 藕粉色 */
+}
+
+.morandi-purple {
+    background-color: #C6BCC8;
+    /* 灰紫 */
+}
+
+/* ================= 页脚 ================= */
+footer {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    color: #777;
+    margin-top: 50px;
+}
+
+.last-updated {
+    color: #00d4ff;
+    /* 鲜亮的浅蓝色，比 lightblue 更突显点 */
+    font-weight: 500;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 15px;
+        gap: 15px;
+    }
+
+    .main-wrapper {
+        padding-top: 180px;
+    }
+}

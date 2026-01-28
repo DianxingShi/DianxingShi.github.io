@@ -5,97 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dianxing Shi</title>
-    
+
     <link rel="icon" href="pages/img/favicon.svg" type="image/svg+xml">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <style>
-        .TNR {
-            font-family: 'Times New Roman', Times, serif;
-        }
-        /* ================= 全局基础样式 ================= */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; 
-        }
-
-        /* ================= 导航栏 ================= */
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 25px 0;
-            background: transparent;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo a {
-            font-weight: 700;
-            font-size: 22px;
-            color: #222;
-            text-decoration: none;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #000;
-            text-decoration: none;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #000;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* ================= 主内容区域 ================= */
-        .main-wrapper {
-            padding-top: 140px;
-            padding-bottom: 60px;
-            min-height: 100vh;
-        }
-
         .profile-section {
             margin-bottom: 50px;
             text-align: center;
@@ -108,7 +28,7 @@
             border-radius: 50%;
             overflow: hidden;
             border: 4px solid #fff;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -120,13 +40,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .profile-name {
-            font-weight: 600;
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #222;
         }
 
         .social-links {
@@ -145,7 +58,7 @@
             background-color: #fff;
             color: #555;
             text-decoration: none;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             font-size: 20px;
         }
@@ -156,24 +69,18 @@
             transform: translateY(-3px);
         }
 
-        /* 移动端适配 */
+        /* 移动端适配：仅页面特有元素 */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-            nav {
-                margin-top: 15px;
-                gap: 15px;
-            }
-            .main-wrapper {
-                padding-top: 180px;
-            }
-            .love-sidebar, .clock-sidebar, .face, #mouser {
+
+            .love-sidebar,
+            .clock-sidebar,
+            .face,
+            #mouser {
                 display: none !important;
             }
         }
 
-        /* ================= 左侧：爱心动画 (西) - 修改版 ================= */
+        /* ================= 页面特有：爱心动画 (西) - 修改版 ================= */
         .love-sidebar {
             position: fixed;
             top: 50%;
@@ -182,7 +89,7 @@
             transform: translateY(-50%) scale(0.68);
             transform-origin: left center;
             display: flex;
-            height: 200px; 
+            height: 200px;
             z-index: 9999;
             padding: 0;
             margin: 0;
@@ -196,64 +103,168 @@
             margin: 0 10px;
         }
 
-        .love-sidebar li:nth-child(1) { background-color: #6D8299; animation: love1 2.5s 0s infinite; }
-        .love-sidebar li:nth-child(2) { background-color: #8CA090; animation: love2 2.5s 0.1s infinite; }
-        .love-sidebar li:nth-child(3) { background-color: #C3C0A7; animation: love3 2.5s 0.2s infinite; }
-        .love-sidebar li:nth-child(4) { background-color: #E6DCCD; animation: love4 2.5s 0.3s infinite; }
-        .love-sidebar li:nth-child(5) { background-color: #D3A29D; animation: love5 2.5s 0.4s infinite; }
-        .love-sidebar li:nth-child(6) { background-color: #BFA6A8; animation: love4 2.5s 0.5s infinite; }
-        .love-sidebar li:nth-child(7) { background-color: #9E908D; animation: love3 2.5s 0.6s infinite; }
-        .love-sidebar li:nth-child(8) { background-color: #7D7D7D; animation: love2 2.5s 0.7s infinite; }
-        .love-sidebar li:nth-child(9) { background-color: #53626F; animation: love1 2.5s 0.8s infinite; }
+        .love-sidebar li:nth-child(1) {
+            background-color: #6D8299;
+            animation: love1 2.5s 0s infinite;
+        }
 
-        @keyframes love1 { 30%, 50% { height: 60px; transform: translateY(-30px); } 70%, 100% { height: 20px; transform: translateY(0); } }
-        @keyframes love2 { 30%, 50% { height: 125px; transform: translateY(-60px); } 70%, 100% { height: 20px; transform: translateY(0); } }
-        @keyframes love3 { 30%, 50% { height: 160px; transform: translateY(-75px); } 70%, 100% { height: 20px; transform: translateY(0); } }
-        @keyframes love4 { 30%, 50% { height: 180px; transform: translateY(-60px); } 70%, 100% { height: 20px; transform: translateY(0); } }
-        @keyframes love5 { 30%, 50% { height: 200px; transform: translateY(-45px); } 70%, 100% { height: 20px; transform: translateY(0); } }
+        .love-sidebar li:nth-child(2) {
+            background-color: #8CA090;
+            animation: love2 2.5s 0.1s infinite;
+        }
+
+        .love-sidebar li:nth-child(3) {
+            background-color: #C3C0A7;
+            animation: love3 2.5s 0.2s infinite;
+        }
+
+        .love-sidebar li:nth-child(4) {
+            background-color: #E6DCCD;
+            animation: love4 2.5s 0.3s infinite;
+        }
+
+        .love-sidebar li:nth-child(5) {
+            background-color: #D3A29D;
+            animation: love5 2.5s 0.4s infinite;
+        }
+
+        .love-sidebar li:nth-child(6) {
+            background-color: #BFA6A8;
+            animation: love4 2.5s 0.5s infinite;
+        }
+
+        .love-sidebar li:nth-child(7) {
+            background-color: #9E908D;
+            animation: love3 2.5s 0.6s infinite;
+        }
+
+        .love-sidebar li:nth-child(8) {
+            background-color: #7D7D7D;
+            animation: love2 2.5s 0.7s infinite;
+        }
+
+        .love-sidebar li:nth-child(9) {
+            background-color: #53626F;
+            animation: love1 2.5s 0.8s infinite;
+        }
+
+        @keyframes love1 {
+
+            30%,
+            50% {
+                height: 60px;
+                transform: translateY(-30px);
+            }
+
+            70%,
+            100% {
+                height: 20px;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes love2 {
+
+            30%,
+            50% {
+                height: 125px;
+                transform: translateY(-60px);
+            }
+
+            70%,
+            100% {
+                height: 20px;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes love3 {
+
+            30%,
+            50% {
+                height: 160px;
+                transform: translateY(-75px);
+            }
+
+            70%,
+            100% {
+                height: 20px;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes love4 {
+
+            30%,
+            50% {
+                height: 180px;
+                transform: translateY(-60px);
+            }
+
+            70%,
+            100% {
+                height: 20px;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes love5 {
+
+            30%,
+            50% {
+                height: 200px;
+                transform: translateY(-45px);
+            }
+
+            70%,
+            100% {
+                height: 20px;
+                transform: translateY(0);
+            }
+        }
 
         /* ================= 右侧：粒子时钟 (东) ================= */
         .clock-sidebar {
             position: fixed;
             top: 50%;
-            right: 15px; 
+            right: 15px;
             transform: translateY(-50%);
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             align-items: center;
             z-index: 9999;
             gap: 2px;
         }
-        
+
         .clock {
-            width: 90px; 
-            height: 75px; 
+            width: 90px;
+            height: 75px;
         }
-        
+
         .clock-colon {
-            height: 45px; 
+            height: 45px;
         }
 
         /* ================= ☺ 左下角：跟随鼠标笑脸 ☺ ================= */
         .face {
             position: fixed;
-            bottom: 10px; 
+            bottom: 10px;
             left: 10px;
-            z-index: 99999; 
-            
+            z-index: 99999;
+
             width: 300px;
             height: 300px;
-            transform: scale(0.33); 
-            transform-origin: bottom left; 
-            
+            transform: scale(0.33);
+            transform-origin: bottom left;
+
             border-radius: 50%;
             background: #ffcd00;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.15); 
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.15);
         }
-        
+
         .face::before {
             content: '';
             position: absolute;
@@ -265,7 +276,7 @@
             border-bottom-right-radius: 70px;
             transition: 0.5s;
         }
-        
+
         .face:hover::before {
             top: 210px;
             width: 150px;
@@ -274,13 +285,13 @@
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
         }
-        
+
         .eyes {
             position: relative;
             top: -40px;
             display: flex;
         }
-        
+
         .eyes .eye {
             position: relative;
             width: 80px;
@@ -290,19 +301,18 @@
             margin: 0 15px;
             border-radius: 50%;
         }
-        
+
         .eyes .eye::before {
             content: '';
             position: absolute;
             top: 50%;
-            left: 25px; 
+            left: 25px;
             transform: translate(-50%, -50%);
             width: 40px;
             height: 40px;
             background: #000;
             border-radius: 50%;
         }
-
     </style>
 </head>
 
@@ -312,9 +322,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="pages/home.html">DIANXING SHI (时点星)</a>
+                    <a href="index.html">DIANXING SHI (时点星)</a>
                 </div>
-                
+
                 <nav>
                     <a href="index.html">Home</a>
                     <a href="pages/publication.html">Publication</a>
@@ -322,43 +332,55 @@
                     <!-- <a href="pages/about.html">About</a> -->
                     <a href="pages/art.html">ART</a>
                 </nav>
-                
+
             </div>
         </div>
     </header>
 
     <div class="main-wrapper">
         <section class="container">
-            
+
             <div class="row justify-content-center">
                 <div class="col-lg-8 profile-section">
-                    
+
                     <div class="avatar-container">
                         <img src="pages/img/avatar.jpg" alt="Dianxing Shi Profile">
                     </div>
 
                     <div class="social-links">
                         <a href="mailto:firstcoolsdx@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="https://scholar.google.com/citations?user=Lb1zgfEAAAAJ" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-                        <a href="https://github.com/DianxingShi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a>
+                        <a href="https://scholar.google.com/citations?user=Lb1zgfEAAAAJ" target="_blank"
+                            title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                        <a href="https://github.com/DianxingShi" target="_blank" title="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="https://orcid.org/YOUR-ORCID-ID" target="_blank" title="ORCID"><i
+                                class="ai ai-orcid"></i></a>
                     </div>
                 </div>
                 <span aria-hidden="true">🌸</span>
-                <strong 
-                <span style= "font-family: 'Brush Script MT','Snell Roundhand','Segoe Script',cursive; color:#C48A9A;">
+                <strong <span
+                    style="font-family: 'Brush Script MT','Snell Roundhand','Segoe Script',cursive; color:#C48A9A;">
                     Let life be beautiful like summer flowers <br>and death like autumn leaves.✨
-                </span><br><br><br>
-                <span style="font-family:'Times New Roman', Times, serif;color:#000;">
-                    HFUT .BS&nbsp;&nbsp;&nbsp;&nbsp;2018-2022<br>
-                    BRIUG .MS&nbsp;&nbsp;&nbsp;&nbsp;2023-2026<br>
-                    <!-- OsakaU .PhD candidate&nbsp;&nbsp;&nbsp;&nbsp;2026- -->
-                </span></strong>
-                <p style="font-family:'Times New Roman', Times, serif;">Artificial Intelligence;&nbsp;&nbsp;Machine Learning;&nbsp;&nbsp;Computer Vision;&nbsp;&nbsp;Large Language Model;&nbsp;&nbsp;Agent</p>
+                    </span><br><br><br>
+                    <span style="font-family:'Times New Roman', Times, serif;color:#000;">
+                        HFUT .BS&nbsp;&nbsp;&nbsp;&nbsp;2018-2022<br>
+                        BRIUG .MS&nbsp;&nbsp;&nbsp;&nbsp;2023-2026<br>
+                        <!-- OsakaU .PhD candidate&nbsp;&nbsp;&nbsp;&nbsp;2026- -->
+                    </span></strong>
+                <div class="interests-container">
+                    <span class="interest-badge morandi-blue">Artificial Intelligence</span>
+                    <span class="interest-badge morandi-green">Machine Learning</span>
+                    <span class="interest-badge morandi-beige">Computer Vision</span>
+                    <span class="interest-badge morandi-pink">Large Language Model</span>
+                    <span class="interest-badge morandi-purple">Agent</span>
+                </div>
                 <br>
-                <p >&nbsp;&nbsp;&nbsp;&nbsp;I am currently a master student at the Beijing Research Institute of Uranium Geology (BRIUG). 
-                    Before that I was an undergraduate student majoring in Electronic Information Engineering at Hefei University of Technology (HFUT).
-                    My current research interests include Large Language Models, Agent, especially self-evolving agent and their intersection and inspiration with the field of human-computer interaction. </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;I am currently a master student at the Beijing Research Institute of Uranium
+                    Geology (BRIUG).
+                    Before that I was an undergraduate student majoring in Electronic Information Engineering at Hefei
+                    University of Technology (HFUT).
+                    My current research interests include Large Language Models, Agent, especially self-evolving agent
+                    and their intersection and inspiration with the field of human-computer interaction. </p>
 
             </div>
             <br>
@@ -366,16 +388,25 @@
             <br>
             <br>
             <p style="font-family:'Times New Roman', Times, serif;color:#000;font-size: 28px;">News</p>
-            <p >
+            <p>
                 <span style="font-family:'Times New Roman', Times, serif;color:#000000;">•</span>
-                                <span style="font-family:'Times New Roman', Times, serif;color: #0000FF;">2026.01</span>
-            <span
-            style="font-family:'Times New Roman', Times, serif;color:#000000;">
-            — My  first-author paper [Can Synthetic Images Serve as Effective and Efficient Class Prototypes? ] is accepted to IEEE ICASSP'26 🎉</span></p>
+                <span style="font-family:'Times New Roman', Times, serif;color: #0000FF;">2026.01</span>
+                <span style="font-family:'Times New Roman', Times, serif;color:#000000;">
+                    — My first-author paper [Can Synthetic Images Serve as Effective and Efficient Class Prototypes? ]
+                    is accepted to IEEE ICASSP'26 🎉</span>
+            </p>
     </div>
 
     <ul class="love-sidebar">
-        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
     </ul>
 
     <div class="face">
@@ -395,48 +426,54 @@
         <canvas class="clock"></canvas>
         <canvas class="clock"></canvas>
     </div>
-    
+
+    <footer>
+        <div class="container">
+            <p>Copyright &copy; Dianxing Shi | Last updated: <span id="last-updated" class="last-updated"></span></p>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
+
     <script>
         // ================= 粒子时钟逻辑 =================
         var clocks = document.getElementsByClassName("clock");
         var ctx = [];
         var timestr = "";
         var particleArray = [];
-        
+
         var colors = [
-            "#7E96B5", "#89A4A3", "#A9A9A9", "#A7BFA0", 
-            "#D4C9A8", "#A9A9A9", "#DBC4B3", "#E6B595" 
+            "#7E96B5", "#89A4A3", "#A9A9A9", "#A7BFA0",
+            "#D4C9A8", "#A9A9A9", "#DBC4B3", "#E6B595"
         ];
         var fonts = [];
 
         function initClock() {
             for (var i = 0; i < clocks.length; i++) {
-                clocks[i].width = 150; 
+                clocks[i].width = 150;
                 clocks[i].height = 150;
                 ctx[i] = clocks[i].getContext("2d");
                 ctx[i].fillStyle = colors[i];
                 particleArray.push([]);
             }
 
-            ctx[0].font = "bold 90px Arial"; 
-            
+            ctx[0].font = "bold 90px Arial";
+
             for (var i = 0; i <= 10; i++) {
                 var char = (i === 10) ? ":" : i.toString();
-                
+
                 ctx[0].clearRect(0, 0, 150, 150);
-                ctx[0].fillText(char, 20, 105); 
-                
+                ctx[0].fillText(char, 20, 105);
+
                 var width = 150;
                 var height = 150;
                 var data = ctx[0].getImageData(0, 0, width, height).data;
                 var tdata = [];
-                var density = 4; 
+                var density = 4;
                 for (var y = 0; y < height; y += density) {
                     for (var x = 0; x < width; x += density) {
                         var index = (y * width + x) * 4;
-                        if (data[index + 3] > 128) { 
+                        if (data[index + 3] > 128) {
                             tdata.push([x, y]);
                         }
                     }
@@ -458,11 +495,11 @@
             constructor(x, y) {
                 this.x = Math.random() * 150;
                 this.y = Math.random() * 150;
-                this.ex = x; 
-                this.ey = y; 
+                this.ex = x;
+                this.ey = y;
             }
             update() {
-                this.x -= (this.x - this.ex) / 5; 
+                this.x -= (this.x - this.ex) / 5;
                 this.y -= (this.y - this.ey) / 5;
             }
             draw(i) {
@@ -476,12 +513,12 @@
         function change(charIndex, clockIndex) {
             var targetPoints = fonts[charIndex];
             var currentParticles = particleArray[clockIndex];
-            
+
             var diff = targetPoints.length - currentParticles.length;
 
             if (diff > 0) {
                 for (var i = 0; i < diff; i++) {
-                    currentParticles.push(new Particle(75, 75)); 
+                    currentParticles.push(new Particle(75, 75));
                 }
             }
             if (diff < 0) {
@@ -496,7 +533,7 @@
 
         function drawClock() {
             var timeArr = getFormattedTime();
-            
+
             for (var i = 0; i < clocks.length; i++) {
                 var charIndex = parseInt(timeArr[i]);
                 if (!timestr || timestr[i] != timeArr[i]) {
@@ -516,7 +553,7 @@
         }
 
         initClock();
-        setInterval(drawClock, 30); 
+        setInterval(drawClock, 30);
 
         // ================= ☺ 左下角：笑脸跟随鼠标逻辑 ☺ =================
         document.addEventListener("mousemove", eyeball);
@@ -529,12 +566,19 @@
                 let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
                 let radian = Math.atan2(event.pageX - x, event.pageY - y);
                 let rot = (radian * (180 / Math.PI) * -1) + 270;
-                eye.style.transform  = "rotate("+ rot +"deg)";
+                eye.style.transform = "rotate(" + rot + "deg)";
             })
         }
 
         // ================= 绚丽流星鼠标拖尾已删除 =================
 
+        // ================= 动态显示最后更新时间 =================
+        document.getElementById('last-updated').textContent = new Date(document.lastModified).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
     </script>
 </body>
+
 </html>
